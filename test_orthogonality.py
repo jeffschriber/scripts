@@ -17,7 +17,8 @@ for state_1 in states:
         wfn_0 = {}
         
         for line in datafile_0:
-            wfn_0[line[0]] = [line[1],line[2]]
+            det = line[1] + line[2]
+            wfn_0[det] = line[0]
         
         
         datafile_1 = np.loadtxt("final_wfn_" + state_2 + ".txt",dtype=str)
@@ -25,13 +26,14 @@ for state_1 in states:
         wfn_1 = {}
         
         for line in datafile_1:
-            wfn_1[line[0]] = [line[1],line[2]]
+            det = line[1] + line[2]
+            wfn_1[det] = line[0]
         
         
         # Compute the overlap
         overlap = 0.0
         for key, value in wfn_0.iteritems():
             if key in wfn_1:
-                overlap = overlap + (float(wfn_1[key][0]) * float(value[0]))
+                overlap = overlap + (float(wfn_1[key]) * float(value))
         
         print "<" + state_1 + "|" + state_2 + "> = " + str(overlap) + "\n"
