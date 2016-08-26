@@ -12,7 +12,7 @@ for state_1 in states:
         if( state_2 < state_1 ):
             continue        
 
-        datafile_0 = np.loadtxt("final_wfn_" + state_1 + ".txt",dtype=str)
+        datafile_0 = np.loadtxt("final_wfn_" + state_1 + ".txt",dtype=str, skiprows=1)
         
         wfn_0 = {}
         
@@ -20,15 +20,13 @@ for state_1 in states:
             det = line[1] + line[2]
             wfn_0[det] = line[0]
         
-        
-        datafile_1 = np.loadtxt("final_wfn_" + state_2 + ".txt",dtype=str)
+        datafile_1 = np.loadtxt("final_wfn_" + state_2 + ".txt",dtype=str, skiprows=1 )
         
         wfn_1 = {}
         
         for line in datafile_1:
             det = line[1] + line[2]
             wfn_1[det] = line[0]
-        
         
         # Compute the overlap
         overlap = 0.0
