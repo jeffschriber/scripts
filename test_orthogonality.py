@@ -34,4 +34,5 @@ for state_1 in states:
             if key in wfn_1:
                 overlap = overlap + (float(wfn_1[key]) * float(value))
         
+        overlap = abs(overlap)
         print "<" + state_1 + "|" + state_2 + "> = " + str(overlap) + "\n"
